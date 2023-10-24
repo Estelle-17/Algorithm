@@ -1,6 +1,7 @@
-출저 - https://school.programmers.co.kr/learn/courses/30/lessons/62050
-사용언어 - C++
+### 출저 - https://school.programmers.co.kr/learn/courses/30/lessons/62050
+## 사용언어 - C++
 
+```cpp
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -152,3 +153,4 @@ int solution(vector<vector<int>> land, int height) {
 
     return answer;
 }
+```
