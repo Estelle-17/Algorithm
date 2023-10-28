@@ -1,4 +1,4 @@
-### 출저 - https://school.programmers.co.kr/learn/courses/30/lessons/72413
+### 출처 - https://school.programmers.co.kr/learn/courses/30/lessons/72413
 ## 사용언어 - C++
 
 ```cpp
