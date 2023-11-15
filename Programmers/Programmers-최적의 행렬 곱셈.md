@@ -1,5 +1,6 @@
 ### 출처 - https://school.programmers.co.kr/learn/courses/30/lessons/12942
 ## 사용언어 - C++
+## 해설 - https://velog.io/@estelle17/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%96%89%EB%A0%AC-%EA%B3%B1%EC%85%88
 
 ```cpp
 #include<bits/stdc++.h>
