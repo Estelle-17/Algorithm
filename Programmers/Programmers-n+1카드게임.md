@@ -1,8 +1,7 @@
 ### 출처 - https://school.programmers.co.kr/learn/courses/30/lessons/258707
 ## 사용언어 - C++
-## 해설 - https://velog.io/@estelle17/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-GPS
+## 해설 - https://velog.io/@estelle17/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-n1%EC%B9%B4%EB%93%9C%EA%B2%8C%EC%9E%84
 
--푸는중-
 ```cpp
 #include <bits/stdc++.h>
 #include <string>
@@ -19,26 +18,50 @@ pair<int, int> p;
 
 bool checkCard(int checkNumber)
 {
+    
     int qSize = player.size();
-    //cout << "checkNumber : " << checkNumber << endl;
     for(int i = 0; i < qSize; i++)  //현재 카드로 n+1수를 만들 수 있는지 확인
     {
         int num = player.front();   player.pop();
-        if(checkNum[num] == 0)
+        if(checkNum[num] == 0)  //이미 사용한 카드거나 없다면
             continue;
         
-        //cout << num << ":" << checkNum[num] << ", " << (n+1)-num << ":" << checkNum[(n+1)-num] << " -> " << n+1 << endl;
-        if(checkNum[(n+1)-num] <= checkNumber && checkNum[(n+1)-num] != 0){
-            if(checkNumber == 2 && coinCount < checkNum[(n+1)-num]-1 + checkNum[num]-1) //n+1수를 만드는데 뽑은 카드를 사용했지만 코인이 부족했을 경우
-                continue;
-            
-            
-            coinCount -= (checkNum[(n+1)-num]-1) + (checkNum[num]-1);
-            //cout << num << ", " << (n+1)-num << " coin : " << coinCount << endl;
-            p = make_pair(checkNum[num], checkNum[(n+1)-num]);
-            checkNum[num] = 0;
-            checkNum[(n+1)-num] = 0;
-            return true;
+        if(checkNum[(n+1)-num] != 0){   //카드 중에 n+1을 만들 수 있는 카드가 있다면
+            if(checkNumber == 0)    //코인 0개를 사용하는 경우
+            {
+                if(checkNum[(n+1)-num] != 1 || checkNum[num] != 1)  //두 카드가 플레이어가 들고 있는 카드일 경우
+                {
+                    player.push(num);
+                    continue;
+                }
+
+                p = make_pair(checkNum[num], checkNum[(n+1)-num]);
+                checkNum[num] = 0;
+                checkNum[(n+1)-num] = 0;
+                return true;
+            }else if(checkNumber == 1)    //코인 1개를 사용하는 경우
+            {
+                if(checkNum[(n+1)-num] == 1 && checkNum[num] == 2 && coinCount >= 1 ||
+                   checkNum[(n+1)-num] == 2 && checkNum[num] == 1 && coinCount >= 1)    //두 카드 중 한개만 뽑을 카드일 경우
+                {
+                    coinCount -= 1;
+                    p = make_pair(checkNum[num], checkNum[(n+1)-num]);
+                    checkNum[num] = 0;
+                    checkNum[(n+1)-num] = 0;
+                    return true;
+                }
+            }else if(checkNumber == 2)    //코인 2개를 사용하는 경우
+            {
+                if(checkNum[(n+1)-num] == 2 && checkNum[num] == 2 && coinCount >= 2)    //두 카드 모두 뽑을 카드일 경우
+                {
+                    coinCount -= 2;
+                    p = make_pair(checkNum[num], checkNum[(n+1)-num]);
+                    checkNum[num] = 0;
+                    checkNum[(n+1)-num] = 0;
+                    return true;
+                }
+               
+            }
         }
         player.push(num);
     }
@@ -53,83 +76,42 @@ int solution(int coin, vector<int> cards) {
     int index = n/3;
     coinCount = coin;
     
+    //처음에 들고 갈 카드 저장
     for(int i = 0; i < n/3; i++)
     {
         player.push(cards[i]);
         checkNum[cards[i]] = 1;
     }
     
-    while(true)
+    while(true) //3가지의 경우가 불가능할때까지 반복
     {
         answer++;
-        if(index >= cards.size()-1)
+        if(index >= cards.size()-1) //뽑을 카드가 없다면 끝
             break;
         
         bool isComplete = false;
-        //nextCard.push(cards[index]);
-        //nextCard.push(cards[index+1]);
         checkNum[cards[index]] = 2;
         checkNum[cards[index+1]] = 2;
         player.push(cards[index]);
         player.push(cards[index+1]);
         index += 2;
         
-        isComplete = checkCard(1);
+        isComplete = checkCard(0);
         if(isComplete) //현재 있는 카드로 체크
             continue;
         
         if(coinCount > 0)
         {
-            isComplete = checkCard(2);
+            isComplete = checkCard(1);  //코인 한 개를 사용하여 n+1을 만들 수 있는지 확인
+            if(isComplete)
+                continue;
+            
+            isComplete = checkCard(2);  //코인 두 개를 사용하여 n+1을 만들 수 있는지 확인
             if(isComplete)
                 continue;
         }
         if(!isComplete)
             break;
-        /*if(coin > 0 && nextCard.size() >= 1)
-        {
-            for(int i = 0; i < nextCard.size(); i++)
-            {
-                queue<int> temp = player;
-                int num = nextCard.front(); nextCard.pop();
-                checkNum[num] = 1;
-                player.push(num);
-                if(checkCard(num, -1)) { //추가 후 있는 카드로 체크
-                    cout << "add : " << num << " - coin : " << coin << endl;
-                    isComplete = true;
-                    coin--;
-                    break;
-                }
-                nextCard.push(num);
-                checkNum[num] = 0;
-                player = temp;
-            }
-            if(!isComplete && nextCard.size() >= 2)
-            {
-                vector<int> vec(nextCard.size(), 1);
-                vec[0] = 0;
-                vec[1] = 0;
-                
-                do{
-                    queue<int> temp = player;
-                    int num = nextCard.front(); nextCard.pop();
-                    checkNum[num] = 1;
-                    player.push(num);
-                    if(checkCard(num, -1)) { //추가 후 있는 카드로 체크
-                        cout << "add : " << num << " - coin : " << coin << endl;
-                        isComplete = true;
-                        coin--;
-                        break;
-                    }
-                    nextCard.push(num);
-                    checkNum[num] = 0;
-                    player = temp;
-                }while(next_permutation(vec.begin(), vec.end()))
-            }
-            
-        }
-        if(!isComplete)
-            break;*/
     }
     
     return answer;
