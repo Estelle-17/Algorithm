@@ -39,7 +39,7 @@ bool checkDay(string date, string personalDate, int addMonth){
         persDate[1] -= 12;
     }
  
-    //만약 현재날짜보다 더 전의 날짜를 가리키면 true
+    //만약 현재날짜보다 더 전의 날짜를 가리킨다면 true
     if(curDate[0] > persDate[0] ||
        curDate[0] == persDate[0] && curDate[1] > persDate[1] ||
        curDate[0] == persDate[0] && curDate[1] == persDate[1] && curDate[2] >= persDate[2])
