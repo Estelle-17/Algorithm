@@ -6,7 +6,9 @@
 #include <bits/stdc++.h>
 #include <iostream>
 #include <string>
+
 using namespace std;
+
 int solution(string s)
 {
     int answer = 1;
