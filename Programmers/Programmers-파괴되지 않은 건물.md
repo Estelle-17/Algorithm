@@ -4,5 +4,31 @@
 
 ```cpp
 #include <bits/stdc++.h>
+#include <string>
 #include <vector>
+
+using namespace std;
+
+int solution(vector<vector<int>> board, vector<vector<int>> skill) {
+    int answer = 0;
+    vector<vector<int>> building;
+    
+    for(int idx = 0; idx < skill.size(); idx++)
+    {
+        if([skill[idx][0]] == 1)
+        {
+            building[skill[idx][1]][skill[idx][2]] = -skill[idx][5];
+            building[skill[idx][1]][skill[idx][4]] = skill[idx][5];
+            building[skill[idx][3]][skill[idx][2]] = skill[idx][5];
+            building[skill[idx][3]][skill[idx][4]] = -skill[idx][5];
+        }else{
+            building[skill[idx][1]][skill[idx][2]] = skill[idx][5];
+            building[skill[idx][1]][skill[idx][4]] = -skill[idx][5];
+            building[skill[idx][3]][skill[idx][2]] = -skill[idx][5];
+            building[skill[idx][3]][skill[idx][4]] = skill[idx][5];
+        }
+    }
+    
+    return answer;
+}
 ```
