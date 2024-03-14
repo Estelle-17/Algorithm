@@ -1,6 +1,6 @@
 ### 출처 - https://school.programmers.co.kr/learn/courses/30/lessons/42889
 ## 사용언어 - java
-## 해설 - https://velog.io/@estelle17/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-%EC%8B%A0%EA%B3%A0-%EA%B2%B0%EA%B3%BC-%EB%B0%9B%EA%B8%B0
+## 해설 - https://velog.io/@estelle17/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C-%EC%8B%A4%ED%8C%A8%EC%9C%A8
 
 ```java
 import java.util.*;
