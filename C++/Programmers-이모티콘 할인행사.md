@@ -18,14 +18,14 @@ vector<vector<int>> user;
 void solve(int index) {
     if(index >= emoticon.size())
         return;
-        
+
     for(int i = 40; i >= 10; i -= 10)   //각 이모티콘마다 40~10%의 할인율을 적용시키면서 모든 경우의 수 계산
     {
         emoticon[index][0] = i;
         emoticonPrice[index] = emoticon[index][1] - ((emoticon[index][1] / 100) * emoticon[index][0]);  //할인율 적용 가격 저장
         if(index == emoticon.size()-1)
         {
-            //이모티콘 플러스 서비스 가입 수와 이모티콘 매출액 계산
+            //이모티콘 플러스 서비스 가입 수 및 이모티콘 매출액 계산
             result = make_pair(0, 0);
             for(vector<int> v : user)
             {
