@@ -21,7 +21,6 @@ vector<string> split(string input, char dlim)
 	{
 		result.push_back(stringBuffer);
 	}
-
 	return result;
 }
 
