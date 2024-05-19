@@ -66,7 +66,7 @@ string checkString(string w)
         string str = "(" + checkString(v) + ")";
         //첫번째와 마지막 문자를 제거한 문자열 생성
         string s = u.substr(1, u.length()-2);
-        //이후 (와 )를 바꿔줌
+        //이후 '('와 ')'를 바꿔줌
         for(int i = 0; i < s.length(); i++)
         {
             if(s[i] == '(')
