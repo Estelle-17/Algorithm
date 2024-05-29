@@ -38,8 +38,8 @@ int solution(vector<string> lines) {
         t.processingTime = stof(str.substr(24, 5));
         timelines.push_back(t);
     }
-    int cnt = 0;
     
+    int cnt = 0;
     for(int i = 0; i < timelines.size(); i++)
     {
         Time curTime = timelines[i];
