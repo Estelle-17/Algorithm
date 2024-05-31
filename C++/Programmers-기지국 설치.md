@@ -35,7 +35,7 @@ int solution(int n, vector<int> stations, int w){
         //설치된 기지국의 맨 앞의 전파 범위
         start = stations[i] + w + 1;
     }
-    //마지막 기지국의 전파 범위가 마지막 아파트까지 전파가 닿는지 확인
+    //마지막 기지국의 전파 범위가 마지막 아파트까지 전파가 닿았는지 확인
     if(start <= n)
     {
         int len = n - start + 1;
