@@ -13,7 +13,7 @@ int INF = 2100000000;
 
 int solution(vector<vector<int>> board) {
     int answer = INF;
-    //[0] : x좌표, [1] : y좌표, [2] : 방향
+    //[0]:x좌표, [1]:y좌표, [2]:방향
     int direction[4][3] = {{0, 1, 0}, {1, 0, 1}, {0, -1, 2}, {-1, 0, 3}};
     int n = board.size();
     vector<vector<vector<int>>> dp(n, vector<vector<int>>(n, vector<int>(4, INF))); 
