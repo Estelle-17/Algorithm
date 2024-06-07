@@ -31,7 +31,7 @@ int solution(int N, vector<vector<int> > road, int K) {
         dist[i] = 100000000;
     }
     
-    //배열에 간선 등록
+    //배열에 간선등록
     for(vector<int> v : road)
     {
         if(roadMap[v[0]][v[1]] > v[2])
