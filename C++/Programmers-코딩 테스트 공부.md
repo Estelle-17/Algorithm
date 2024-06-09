@@ -21,7 +21,7 @@ int solution(int alp, int cop, vector<vector<int>> problems) {
         goal_alp = max(goal_alp, problems[i][0]);
         goal_cop = max(goal_cop, problems[i][1]);
     }
-    //아무 조건 없이 cost 1을 증가하여 알고력이나 코딩력 둘 중 하나를 올릴 수 있음
+    //아무 조건 없이 cost 1을 증가시켜 알고력이나 코딩력 둘 중 하나를 올릴 수 있음
     problems.push_back({0, 0, 1, 0, 1});
     problems.push_back({0, 0, 0, 1, 1});
     
