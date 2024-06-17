@@ -29,7 +29,7 @@ long long solution(int n, int m, int x, int y, vector<vector<int>> queries) {
                 if(end.second > m-1)
                     end.second = m-1;
                 break;
-            case 1: //열이 중가하는 방향 -> 왼쪽으로 범위 이동
+            case 1: //열이 증가하는 방향 -> 왼쪽으로 범위 이동
                 start.second -= dist;
                 if(start.second < 0)
                     start.second = 0;
