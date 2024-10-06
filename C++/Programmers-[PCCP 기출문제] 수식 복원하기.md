@@ -20,7 +20,6 @@ int ChangeBinaryToNumber(int binary, string str)
     }
     return sum;
 }
-
 string ChangeNumberToBinary(int binary, int num)
 {
     if(num == 0)
